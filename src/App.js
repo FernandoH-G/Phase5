@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+// My Imports start here:
+import NavigationBar from "./Components/NavigationBar";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      Phase 5
+        <NavigationBar />
       </div>
     );
   }
 }
 
-export default App
+export default App;
