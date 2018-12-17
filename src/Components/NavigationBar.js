@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import {
   Navbar,
   Nav,
@@ -6,7 +8,6 @@ import {
   NavbarToggler,
   Collapse,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -37,10 +38,12 @@ class NavigationBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/link/">Left Nav Link</NavLink>
+                <NavLink to="/distributionevents">Distribution Events</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/about">About</NavLink>
               </NavItem>
             </Nav>
-
             <Nav className="mr-auto" navbar>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -48,7 +51,6 @@ class NavigationBar extends Component {
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>Homepage</DropdownItem>
-                  <DropdownItem>About</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>Events</DropdownItem>
                 </DropdownMenu>
