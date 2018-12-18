@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
+import { NavLink as Routerlink } from "react-router-dom";
 import {
   Navbar,
   Nav,
@@ -8,6 +7,7 @@ import {
   NavbarToggler,
   Collapse,
   NavItem,
+  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -38,10 +38,12 @@ class NavigationBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink to="/distributionevents">Distribution Events</NavLink>
+                <NavLink href="/distributionevents/">
+                  Distribution Events
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/about">About</NavLink>
+                <NavLink href="/about/">About</NavLink>
               </NavItem>
             </Nav>
             <Nav className="mr-auto" navbar>
@@ -50,9 +52,8 @@ class NavigationBar extends Component {
                   Menu
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>Homepage</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>Events</DropdownItem>
+                  <DropdownItem>Social Media</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
