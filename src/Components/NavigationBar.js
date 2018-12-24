@@ -1,67 +1,40 @@
-import React, { Component } from "react";
-import { NavLink as Routerlink } from "react-router-dom";
-import {
-  Navbar,
-  Nav,
-  NavbarBrand,
-  NavbarToggler,
-  Collapse,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
-class NavigationBar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-  render() {
-    return (
-      <div className="NavigationBar">
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">BBC</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/distributionevents/">
-                  Distribution Events
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/about/">About</NavLink>
-              </NavItem>
-            </Nav>
-            <Nav className="mr-auto" navbar>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Menu
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem divider />
-                  <DropdownItem>Social Media</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        </Navbar>
+const NavigationBar = () => {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">
+        BBC
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
+      <div className="collapse navbar-collapse" id="navbarText">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item ">
+            <NavLink className="nav-link" to="/about">
+              About
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/events">
+              DistributionEvents
+            </NavLink>
+          </li>
+        </ul>
+        <span className="navbar-text">This better get me an A!</span>
       </div>
-    );
-  }
-}
+    </nav>
+  );
+};
 
 export default NavigationBar;

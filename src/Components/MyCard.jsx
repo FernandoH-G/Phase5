@@ -5,8 +5,7 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
-  Button
+  CardSubtitle
 } from "reactstrap";
 const MyCard = props => {
   return (
@@ -19,13 +18,12 @@ const MyCard = props => {
           alt="Card image cap"
         />
         <CardBody>
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardTitle>Bakersfield Homeless Shelter</CardTitle>
+          <CardSubtitle>Distribution Event Location</CardSubtitle>
           <CardText>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            This event seeks to supply those less fortunate with equipment for
+            safe bike riding.
           </CardText>
-          <Button>Button</Button>
         </CardBody>
       </Card>
     </div>

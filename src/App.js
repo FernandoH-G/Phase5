@@ -1,38 +1,39 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
-// My Components:
+import DistributionEvents from "./Components/DistributionEvents";
+import About from "./Components/About";
+import Home from "./Components/Home";
+import NotFound from "./Components/NotFound";
 import NavigationBar from "./Components/NavigationBar";
-import Jumbo from "./Components/Jumbo";
-// My Routes:
-import DistributionEvents from "./Routes/DistributionEvents";
-import About from "./Routes/About";
 
 class App extends Component {
   state = { users: [] };
   componentDidMount() {
-    fetch("/users")
-      .then(res => res.json())
-      .then(users => this.setState({ users }));
+    // fetch("/users")
+    //   // Then takes in the resolved promise and uses it in res
+    // .then(res => res.json())
+    // .then(res => console.log("My res:", res));
+    // .then(newres => console.log("My res.json result: ", newres));
+    //   // Then it takes the result of the previous .then to be saved into comp. state.
+    // .then(users => this.setState({ users }));
   }
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
-          <NavigationBar />
-          <Jumbo />
-          <h1>Users</h1>
-          {this.state.users.map(user => (
-            <div key={user.id}>{user.username}</div>
-          ))}
+      <React.Fragment>
+        <NavigationBar />
+        <main className="content">
           <Switch>
-            <Route exact path="/" />
-            <Route path="/distributionevents" component={DistributionEvents} />
+            {/* Why does path="/dist-events" redirect to not_found?! */}
+            <Route path="/events" component={DistributionEvents} />
             <Route path="/about" component={About} />
+            <Route path="/not_found" component={NotFound} />
+            <Route path="/" exact component={Home} />
+            <Redirect to="/not_found" />
           </Switch>
-        </div>
-      </BrowserRouter>
+        </main>
+      </React.Fragment>
     );
   }
 }
