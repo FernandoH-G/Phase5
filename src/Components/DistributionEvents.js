@@ -7,7 +7,7 @@ import JumboDE from "../Components/JumboDE";
 class DistributionEvents extends Component {
   state = { events: [] };
   componentDidMount() {
-    fetch("/events");
+    fetch("/events").then(events => console.log(events));
     //   .then(res => res.json())
     // .catch("I did not fetch anything from /dist_events");
     // .then(events => this.setState({ events }));
