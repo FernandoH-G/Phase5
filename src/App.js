@@ -9,16 +9,6 @@ import NotFound from "./Components/NotFound";
 import NavigationBar from "./Components/NavigationBar";
 
 class App extends Component {
-  state = { users: [] };
-  componentDidMount() {
-    // fetch("/users")
-    //   // Then takes in the resolved promise and uses it in res
-    // .then(res => res.json())
-    // .then(res => console.log("My res:", res));
-    // .then(newres => console.log("My res.json result: ", newres));
-    //   // Then it takes the result of the previous .then to be saved into comp. state.
-    // .then(users => this.setState({ users }));
-  }
   render() {
     return (
       <React.Fragment>
