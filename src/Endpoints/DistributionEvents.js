@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MainArea from "../Components/MainArea";
-import JumboDE from "../Components/JumboDE";
+import Jumbo from "../Components/Jumbo";
 
 // const { Client } = require("pg"); // This doesn't belong in the front end!
 
@@ -13,9 +13,11 @@ class DistributionEvents extends Component {
     // .then(events => this.setState({ events }));
   }
   render() {
+    let title = "Distribution Events";
+    let message = "At the heart of our organizations are distribution events.";
     return (
       <div>
-        <JumboDE />
+        <Jumbo title={title} message={message} />
         <MainArea />
       </div>
     );

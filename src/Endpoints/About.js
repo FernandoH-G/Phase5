@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Jumbo from "../Components/Jumbo";
 
 class About extends Component {
   state = { volunteers: [] };
@@ -6,7 +7,13 @@ class About extends Component {
     fetch("/users").then(vol => console.log(vol));
   }
   render() {
-    return <div>I'm in About</div>;
+    let title = "About";
+    let message = "Here are our great volunteers";
+    return (
+      <div>
+        <Jumbo title={title} message={message} />
+      </div>
+    );
   }
 }
 

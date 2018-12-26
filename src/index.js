@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+
 // My imports start here:
+// This applies bootstrap styling to all my application!
 import "bootstrap/dist/css/bootstrap.css";
 
 ReactDOM.render(

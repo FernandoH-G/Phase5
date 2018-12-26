@@ -1,17 +1,18 @@
 const express = require("express");
 const router = express.Router();
-// const { Pool, Client } = require("pg");
+const { Pool } = require("pg");
 
-// const pool = new Pool({
-//   user: "bbc",
-//   host: "localhost",
-//   database: "bbc",
-//   password: "123456",
-//   port: "5432"
-// });
+const pool = new Pool({
+  user: "bbc",
+  host: "localhost",
+  database: "bbc",
+  password: "123456",
+  port: "5432"
+});
 
+// console.log("I'm inside events.js file!");
 router.get("/", function(req, res, next) {
-  console.log("I'm in router.get | distributionevents.js");
+  // console.log("I'm in router.get | distributionevents.js");
   res.json([
     {
       id: 1,
@@ -19,20 +20,7 @@ router.get("/", function(req, res, next) {
     }
   ]);
 });
-// router.get("/api/dist_events", function(req, res, next) {
-//   console.log("I'm in router.get | distributionevents.js");
-//   res.json([
-//     {
-//       id: 1,
-//       username: "DEEE"
-//     }
-//   ]);
-// });
 
-// const port = 5000;
-// app.listen(port, () => console.log(`Server started on port${port}`));
-
-// console.log("I'm in router.get | distributionevents.js");
 // let deliver = [];
 // async function firstConn() {
 //   console.log("I'm in firstCount()");

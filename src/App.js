@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
-import DistributionEvents from "./Components/DistributionEvents";
-import About from "./Components/About";
-import Home from "./Components/Home";
-import NotFound from "./Components/NotFound";
+import DistributionEvents from "./Endpoints/DistributionEvents";
+import About from "./Endpoints/About";
+import Home from "./Endpoints/Home";
+import NotFound from "./Endpoints/NotFound";
 import NavigationBar from "./Components/NavigationBar";
 
 class App extends Component {
