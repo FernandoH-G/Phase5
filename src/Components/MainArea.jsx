@@ -6,20 +6,7 @@ class MainArea extends Component {
   render() {
     return (
       <Container>
-        <Row>
-          <Col>
-            <MyCard />
-          </Col>
-          <Col>
-            <MyCard />
-          </Col>
-          <Col>
-            <MyCard />
-          </Col>
-          <Col>
-            <MyCard />
-          </Col>
-        </Row>
+        <Row />
       </Container>
     );
   }

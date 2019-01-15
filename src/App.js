@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
 
 import DistributionEvents from "./Endpoints/DistributionEvents";
 import About from "./Endpoints/About";
