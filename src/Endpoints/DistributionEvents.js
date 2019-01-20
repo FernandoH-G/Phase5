@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MainArea from "../Components/MainArea";
 import Jumbo from "../Components/Jumbo";
 import { DateRangePicker } from "react-dates";
 import { Button } from "reactstrap";
@@ -16,7 +15,6 @@ class DistributionEvents extends Component {
   render() {
     let title = "Distribution Events";
     let message = "At the heart of our organization are distribution events.";
-    // Maybe pass down the result of the query as an array to MainArea component.
     return (
       <div>
         <Jumbo title={title} message={message} />
@@ -39,11 +37,23 @@ class DistributionEvents extends Component {
             let sd = this.state.startDate.format("YYYY-MM-DD");
             let ed = this.state.endDate.format("YYYY-MM-DD");
             console.log("user dates: ", sd, ed);
+            fetch("/events", {
+              method: "post",
+              headers: {
+                "Content-Type": "application/json" //THIS SHIT HAS TO BE VERBATIM!
+              },
+              body: JSON.stringify({
+                sdate: sd,
+                edate: ed
+              })
+            })
+              .then(res => res.json())
+              .then(events => this.state.setState({ events: events }));
           }}
         >
           Query date!
         </Button>{" "}
-        <MainArea />
+        <div className="events" />
       </div>
     );
   }

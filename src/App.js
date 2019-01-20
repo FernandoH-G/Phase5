@@ -17,7 +17,6 @@ class App extends Component {
         <NavigationBar />
         <main className="content">
           <Switch>
-            {/* Why does path="/dist-events" redirect to not_found?! */}
             <Route path="/events" component={DistributionEvents} />
             <Route path="/about" component={About} />
             <Route path="/not_found" component={NotFound} />

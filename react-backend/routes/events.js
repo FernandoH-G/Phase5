@@ -1,40 +1,42 @@
+var bodyParser = require("body-parser");
 const express = require("express");
-const router = express.Router();
 const { Pool } = require("pg");
+const router = express.Router();
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
 
-const pool = new Pool({
-  user: "bbc",
-  host: "localhost",
-  database: "bbc",
-  password: "123456",
-  port: "5432"
-});
+router.post("/", function(req, res, next) {
+  const pool = new Pool({
+    user: "bbc",
+    host: "localhost",
+    database: "bbc",
+    password: "123456",
+    port: "5432"
+  });
 
-// console.log("I'm inside events.js file!");
-router.get("/", function(req, res, next) {
-  // console.log("I'm in router.get | distributionevents.js");
-  res.json([
-    {
-      id: 1,
-      username: "DEEE"
+  let sd = req.body.sdate;
+  let ed = req.body.edate;
+
+  // console.log("dates: ", sd, ed);
+
+  async function queryDE() {
+    let events = [];
+
+    try {
+      const result = await pool.query(
+        'select * from "DistributionEvent" where "Date" between $1 and $2',
+        [sd, ed]
+      );
+      events = result.rows;
+      console.log(events);
+      pool.end();
+    } catch (err) {
+      console.log(err);
     }
-  ]);
+    res.send(events);
+  }
+
+  queryDE();
 });
-
-// let deliver = [];
-// async function firstConn() {
-//   console.log("I'm in firstCount()");
-
-//   try {
-//     const result = await pool.query(
-//       'select * from "DistributionEvent" where "DistributionEventID" = 14'
-//     );
-//     deliver = result.rows;
-//     console.log(deliver);
-//     pool.end();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
 
 module.exports = router;
