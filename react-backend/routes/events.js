@@ -14,17 +14,14 @@ router.post("/", function(req, res, next) {
     port: "5432"
   });
 
-  let sd = req.body.sdate;
-  let ed = req.body.edate;
-
-  // console.log("dates: ", sd, ed);
-
   async function queryDE() {
     let events = [];
+    let sd = req.body.sdate;
+    let ed = req.body.edate;
 
     try {
       const result = await pool.query(
-        'select * from "DistributionEvent" where "Date" between $1 and $2',
+        'select * from distInfo where "Date" between $1 and $2',
         [sd, ed]
       );
       events = result.rows;

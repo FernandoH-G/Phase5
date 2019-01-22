@@ -7,12 +7,8 @@ import {
   CardTitle,
   CardSubtitle
 } from "reactstrap";
+
 class MyCard extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-    this.state = {};
-  }
   render() {
     return (
       <div>
@@ -24,7 +20,7 @@ class MyCard extends Component {
             alt="Card image cap"
           />
           <CardBody>
-            <CardTitle>Bakersfield Homeless Shelter</CardTitle>
+            <CardTitle>{this.props.location}</CardTitle>
             <CardSubtitle>Distribution Event Location</CardSubtitle>
             <CardText>
               This event seeks to supply those less fortunate with equipment for

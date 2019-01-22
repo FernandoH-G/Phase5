@@ -1,17 +1,41 @@
 import React, { Component } from "react";
 import Jumbo from "../Components/Jumbo";
 import { DateRangePicker } from "react-dates";
-import { Button } from "reactstrap";
+import { Button, Container, Row, Col } from "reactstrap";
+import MyCard from "../Components/MyCard";
 // const { Client } = require("pg"); // This doesn't belong in the front end!
 
 class DistributionEvents extends Component {
   state = { events: [] };
-  // componentDidMount() {
-  //   fetch("/events").then(events => console.log(events));
-  //     .then(res => res.json())
-  //   .catch("I did not fetch anything from /dist_events");
-  //   .then(events => this.setState({ events }));
-  // }
+
+  fetchDateRange = () => {
+    let sd = this.state.startDate.format("YYYY-MM-DD");
+    let ed = this.state.endDate.format("YYYY-MM-DD");
+    // console.log("user dates: ", sd, ed);
+    fetch("/events", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json" //THIS SHIT HAS TO BE VERBATIM!
+      },
+      body: JSON.stringify({
+        sdate: sd,
+        edate: ed
+      })
+    })
+      .then(data => data.json())
+      .then(events => {
+        let mappedEvents = events.map(eve => {
+          return (
+            <Col sm="3" key={eve.DistributionEventID}>
+              <MyCard location={eve.Name} />
+            </Col>
+          );
+        });
+        this.setState({ events: mappedEvents });
+        // console.log("Mapped type info:", this.state.events);
+      });
+  };
+
   render() {
     let title = "Distribution Events";
     let message = "At the heart of our organization are distribution events.";
@@ -30,30 +54,12 @@ class DistributionEvents extends Component {
           focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
         />
-        <Button
-          outline
-          color="primary"
-          onClick={() => {
-            let sd = this.state.startDate.format("YYYY-MM-DD");
-            let ed = this.state.endDate.format("YYYY-MM-DD");
-            console.log("user dates: ", sd, ed);
-            fetch("/events", {
-              method: "post",
-              headers: {
-                "Content-Type": "application/json" //THIS SHIT HAS TO BE VERBATIM!
-              },
-              body: JSON.stringify({
-                sdate: sd,
-                edate: ed
-              })
-            })
-              .then(res => res.json())
-              .then(events => this.state.setState({ events: events }));
-          }}
-        >
+        <Button outline color="primary" onClick={this.fetchDateRange}>
           Query date!
         </Button>{" "}
-        <div className="events" />
+        <Container>
+          <Row>{this.state.events}</Row>
+        </Container>
       </div>
     );
   }
