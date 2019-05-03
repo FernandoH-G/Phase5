@@ -25,9 +25,16 @@ class DistributionEvents extends Component {
       .then(data => data.json())
       .then(events => {
         let mappedEvents = events.map(eve => {
+          let address = `${eve.Street} ${eve.City} ${eve.State} 
+          ${eve.ZipCode} `;
           return (
             <Col sm="3" key={eve.DistributionEventID}>
-              <MyCard location={eve.Name} />
+              <MyCard
+                id={eve.AddressID}
+                name={eve.Name}
+                date={eve.Date}
+                location={address}
+              />
             </Col>
           );
         });
@@ -40,7 +47,7 @@ class DistributionEvents extends Component {
     let title = "Distribution Events";
     let message = "At the heart of our organization are distribution events.";
     return (
-      <div>
+      <Container>
         <Jumbo title={title} message={message} />
         <DateRangePicker
           startDate={this.state.startDate} // momentPropTypes.momentObj or null,
@@ -57,10 +64,8 @@ class DistributionEvents extends Component {
         <Button outline color="primary" onClick={this.fetchDateRange}>
           Query date!
         </Button>{" "}
-        <Container>
-          <Row>{this.state.events}</Row>
-        </Container>
-      </div>
+        <Row>{this.state.events}</Row>
+      </Container>
     );
   }
 }

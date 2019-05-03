@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Jumbo from "../Components/Jumbo";
+import { Container } from "reactstrap";
 
 class About extends Component {
   state = { volunteers: [] };
@@ -10,9 +11,9 @@ class About extends Component {
     let title = "About";
     let message = "Here are our great volunteers";
     return (
-      <div>
+      <Container>
         <Jumbo title={title} message={message} />
-      </div>
+      </Container>
     );
   }
 }
