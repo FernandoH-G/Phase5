@@ -5,6 +5,7 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
+/*
 router.post("/", function(req, res, next) {
   const pool = new Pool({
     user: "bbc",
@@ -35,5 +36,5 @@ router.post("/", function(req, res, next) {
 
   queryDE();
 });
-
+*/
 module.exports = router;

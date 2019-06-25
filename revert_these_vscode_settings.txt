@@ -1,6 +1,0 @@
-In order to work on ChromeSnails using vscode, I have to turn off format on 
-save. This is the case because I want to generally leave the framework as is; 
-simply modifying/adding the lines of code that are absolutely necessary.
-
-Therefore, I shall change:
-Editor:Format on save to unchecked.
