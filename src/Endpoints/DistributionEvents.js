@@ -11,7 +11,7 @@ class DistributionEvents extends Component {
   fetchDateRange = () => {
     let sd = this.state.startDate.format("YYYY-MM-DD");
     let ed = this.state.endDate.format("YYYY-MM-DD");
-    // console.log("user dates: ", sd, ed);
+    console.log("user dates: ", sd, ed);
     fetch("/events", {
       method: "post",
       headers: {
